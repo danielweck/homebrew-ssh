@@ -5,43 +5,23 @@ This Homebrew tap provides various SSH-related tools and utilities for macOS.
 ## Available Formulas
 
 ### libsk-libfido2
-Library for macOS Yubikey support for SSH with FIDO2 security keys. This enables hardware-based SSH authentication using FIDO2/WebAuthn security keys.
+Library for macOS Yubikey/Token2 support for SSH with FIDO2 security keys. This enables hardware-based SSH authentication using FIDO2/WebAuthn security keys.
 
 **Installation:**
 ```bash
-brew install michaelroosz/ssh/libsk-libfido2
+brew install danielweck/ssh/libsk-libfido2
 ```
 
 **Post-installation:** Run the following commands to complete setup:
 ```bash
 sudo install-libsk-libfido2
-launchctl load /Library/LaunchAgents/com.mroosz.ssh_env_vars.plist
+launchctl load /Library/LaunchAgents/com.danielweck.ssh_env_vars.plist
 ```
 
 **Alternative:** Use the automated cask installer (recommended):
 ```bash
-brew install michaelroosz/ssh/libsk-libfido2-install
+brew install danielweck/ssh/libsk-libfido2-install
 ```
-
-### ssh-tunnel-manager
-SSH tunnel management tool implemented with xbar for easy GUI management of SSH tunnels.
-
-**Installation:**
-```bash
-brew install michaelroosz/ssh/ssh-tunnel-manager
-```
-
-**Source:** https://github.com/MichaelRoosz/ssh-tunnel-manager
-
-### sshpass
-Non-interactive SSH password authentication tool with a custom fix for the ControlPersist SSH feature.
-
-**Installation:**
-```bash
-brew install michaelroosz/ssh/sshpass
-```
-
-**Source:** https://sourceforge.net/projects/sshpass/
 
 ## Available Casks
 
@@ -50,7 +30,7 @@ Automated installer for libsk-libfido2 that handles all configuration automatica
 
 **Installation:**
 ```bash
-brew install michaelroosz/ssh/libsk-libfido2-install
+brew install danielweck/ssh/libsk-libfido2-install
 ```
 
 This cask automatically:
@@ -63,7 +43,7 @@ This cask automatically:
 
 First, add this tap to your Homebrew:
 ```bash
-brew tap michaelroosz/ssh
+brew tap danielweck/ssh
 ```
 
 Then install any of the available tools using the installation commands above.
