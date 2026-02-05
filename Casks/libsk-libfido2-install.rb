@@ -1,7 +1,7 @@
 cask "libsk-libfido2-install" do
   desc "libsk-libfido2 for MacOS Yubikey/Token2 support for SSH"
   homepage "https://github.com/danielweck/homebrew-ssh/"
-  version "10.2p1_build3"
+  version "10.2p1_build4"
   
   url "https://raw.githubusercontent.com/danielweck/homebrew-ssh/main/etc/install-libsk-libfido2-v1.1.5.zsh"
   sha256 "f832aeee301547fa4ffa653d39c56d42a5585c62fd7d309d702f659eedee0a70"
