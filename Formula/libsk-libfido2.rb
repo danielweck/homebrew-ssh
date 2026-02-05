@@ -43,7 +43,7 @@ class LibskLibfido2 < Formula
 
   resource "install-libsk-libfido2-v1.1.5.zsh" do
     url "https://raw.githubusercontent.com/danielweck/homebrew-ssh/main/etc/install-libsk-libfido2-v1.1.5.zsh"
-    sha256 "da0c9860c5bac20430681a5fb20fbfc432e55df2ed9baa53bbdb4a73606f6f98"
+    sha256 "f832aeee301547fa4ffa653d39c56d42a5585c62fd7d309d702f659eedee0a70"
   end
 
   def install
@@ -89,10 +89,10 @@ class LibskLibfido2 < Formula
 
       IMPORTANT: To finish installation run these commands:
         sudo install-libsk-libfido2
-        launchctl load /Library/LaunchAgents/com.mroosz.ssh_env_vars.plist
+        launchctl load /Library/LaunchAgents/com.danielweck.ssh_env_vars.plist
 
       OR install this homwbrew cask:
-        brew install michaelroosz/ssh/libsk-libfido2-install
+        brew install danielweck/ssh/libsk-libfido2-install
 
       !!!
     EOF
