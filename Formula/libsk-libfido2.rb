@@ -43,7 +43,7 @@ class LibskLibfido2 < Formula
 
   resource "install-libsk-libfido2-v1.1.5.zsh" do
     url "https://raw.githubusercontent.com/danielweck/homebrew-ssh/main/etc/install-libsk-libfido2-v1.1.5.zsh"
-    sha256 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+    sha256 "da0c9860c5bac20430681a5fb20fbfc432e55df2ed9baa53bbdb4a73606f6f98"
   end
 
   def install
