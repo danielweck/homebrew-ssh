@@ -37,20 +37,10 @@ cat <<EOF | tee /Library/LaunchAgents/com.danielweck.ssh_env_vars.plist
 	<array>
 		<string>/bin/zsh</string>
 		<string>-c</string>
-		<string>/bin/launchctl setenv SSH_SK_PROVIDER /usr/local/lib/libsk-libfido2.dylib; killall ssh-agent; /bin/ln -sf \$SSH_AUTH_SOCK_LOCAL \$SSH_AUTH_SOCK; SSH_AUTH_SOCK=\$SSH_AUTH_SOCK_LOCAL /usr/bin/ssh-agent -l</string>
+		<string>/bin/launchctl setenv SSH_SK_PROVIDER /usr/local/lib/libsk-libfido2.dylib;</string>
 	</array>
 	<key>RunAtLoad</key>
 	<true/>
-	<key>Sockets</key>
-	<dict>
-		<key>Listeners</key>
-		<dict>
-			<key>SecureSocketWithKey</key>
-			<string>SSH_AUTH_SOCK_LOCAL</string>
-			<key>SockFamily</key>
-			<string>Unix</string>
-		</dict>
-	</dict>
 </dict>
 </plist>
 EOF
