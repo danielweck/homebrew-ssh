@@ -1,6 +1,6 @@
 class LibskLibfido2 < Formula
-  desc "libsk-libfido2 for MacOS Yubikey support for SSH"
-  homepage "https://github.com/MichaelRoosz/homebrew-ssh/"
+  desc "libsk-libfido2 for MacOS Yubikey/Token2 support for SSH"
+  homepage "https://github.com/danielweck/homebrew-ssh/"
   url "https://cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.2p1.tar.gz"
   mirror "https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.2p1.tar.gz"
   version "10.2p1"
@@ -17,7 +17,6 @@ class LibskLibfido2 < Formula
   depends_on "ldns"
   depends_on "libfido2"
   depends_on "openssl@3"
-  depends_on "theseal/ssh-askpass/ssh-askpass"
 
   uses_from_macos "mandoc" => :build
   uses_from_macos "lsof" => :test
@@ -43,8 +42,8 @@ class LibskLibfido2 < Formula
   end
 
   resource "install-libsk-libfido2-v1.1.5.zsh" do
-    url "https://raw.githubusercontent.com/MichaelRoosz/homebrew-ssh/main/etc/install-libsk-libfido2-v1.1.5.zsh"
-    sha256 "cfe0804f1a9baff987c5b3ea5c5a53dd253e485531855e70b92f2e93493eb400"
+    url "https://raw.githubusercontent.com/danielweck/homebrew-ssh/main/etc/install-libsk-libfido2-v1.1.5.zsh"
+    sha256 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   end
 
   def install
