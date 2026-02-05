@@ -5,7 +5,7 @@ class LibskLibfido2 < Formula
   mirror "https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-10.2p1.tar.gz"
   version "10.2p1"
   sha256 "ccc42c0419937959263fa1dbd16dafc18c56b984c03562d2937ce56a60f798b2"
-  revision 3
+  revision 4
   license "SSH-OpenSSH"
 
   livecheck do
