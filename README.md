@@ -1,3 +1,11 @@
+`sha256sum etc/install-libsk-libfido2-v1.1.5.zsh`
+==>
+`f832aeee301547fa4ffa653d39c56d42a5585c62fd7d309d702f659eedee0a70`
+
+`sha256sum etc/install-libsk-libfido2-v1.1.6.zsh`
+==>
+`e9eafe93f5bec473f959aa6a74728b4f49533c3ca87e99112d97562c1a2767e0`
+
 # SSH Tools Homebrew Tap
 
 This Homebrew tap provides various SSH-related tools and utilities for macOS.

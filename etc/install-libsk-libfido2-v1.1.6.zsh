@@ -1,0 +1,42 @@
+#!/bin/zsh
+
+dest_lib_path="/usr/local/lib/libsk-libfido2.dylib"
+
+if [[ "$(uname -m)" == "x86_64" ]]; then
+  homebrew_prefix=/usr/local
+elif [[ "$(uname -m)" == "arm64" ]]; then
+  homebrew_prefix=/opt/homebrew
+fi
+
+src_lib_path="${homebrew_prefix}/opt/libsk-libfido2/libexec/libsk-libfido2.dylib"
+if [[ -L $src_lib_path ]]; then
+    src_lib_path=$(realpath $src_lib_path)
+fi
+
+install -d -m 755 /usr/local/lib
+
+install -m 755 $src_lib_path $dest_lib_path
+
+cat <<EOF | tee /Library/LaunchAgents/com.danielweck.ssh_env_vars.plist
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>EnvironmentVariables</key>
+	<dict>
+		<key>SSH_SK_PROVIDER</key>
+		<string>/usr/local/lib/libsk-libfido2.dylib</string>
+	</dict>
+	<key>Label</key>
+	<string>com.danielweck.ssh_env_vars</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/bin/zsh</string>
+		<string>-c</string>
+		<string>/bin/launchctl setenv SSH_SK_PROVIDER /usr/local/lib/libsk-libfido2.dylib;</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+</dict>
+</plist>
+EOF

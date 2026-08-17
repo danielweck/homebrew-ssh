@@ -12,7 +12,7 @@ class LibskLibfido2 < Formula
     url "https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/"
     regex(/href=.*?openssh[._-]v?(\d+(?:\.\d+)+(?:p\d+)?)\.t/i)
   end
-  
+
   depends_on "pkgconf" => :build
   depends_on "ldns"
   depends_on "libfido2"
@@ -41,9 +41,9 @@ class LibskLibfido2 < Formula
     sha256 "b13d736aaabe2e427150ae20afb89008c4eb9e04482ab6725651013362fbc7fe"
   end
 
-  resource "install-libsk-libfido2-v1.1.5.zsh" do
-    url "https://raw.githubusercontent.com/danielweck/homebrew-ssh/main/etc/install-libsk-libfido2-v1.1.5.zsh"
-    sha256 "f832aeee301547fa4ffa653d39c56d42a5585c62fd7d309d702f659eedee0a70"
+  resource "install-libsk-libfido2-v1.1.6.zsh" do
+    url "https://raw.githubusercontent.com/danielweck/homebrew-ssh/main/etc/install-libsk-libfido2-v1.1.6.zsh"
+    sha256 "e9eafe93f5bec473f959aa6a74728b4f49533c3ca87e99112d97562c1a2767e0"
   end
 
   def install
@@ -78,8 +78,8 @@ class LibskLibfido2 < Formula
 
     libexec.install "libsk-libfido2.dylib"
 
-    resource("install-libsk-libfido2-v1.1.5.zsh").stage do
-      bin.install "install-libsk-libfido2-v1.1.5.zsh" => "install-libsk-libfido2"
+    resource("install-libsk-libfido2-v1.1.6.zsh").stage do
+      bin.install "install-libsk-libfido2-v1.1.6.zsh" => "install-libsk-libfido2"
     end
   end
 
