@@ -6,6 +6,30 @@
 ==>
 `e9eafe93f5bec473f959aa6a74728b4f49533c3ca87e99112d97562c1a2767e0`
 
+in homebrew core now:
+
+https://github.com/Homebrew/homebrew-core/blob/main/Formula/o/openssh-sk-provider.rb
+`brew install openssh-sk-provider`
+
+* `sudo mv /usr/local/lib/libsk-libfido2.dylib /usr/local/lib/libsk-libfido2_DANIEL.dylib`
+* `ls -alshFGt --color=auto /usr/local/lib/libsk-libfido2_DANIEL.dylib`
+* `sudo cp /opt/homebrew/opt/openssh-sk-provider/lib/sk-libfido2.dylib /usr/local/lib/libsk-libfido2.dylib`
+* `sudo chmod a+x /usr/local/lib/libsk-libfido2.dylib`
+* `ls -alshFGt --color=auto /usr/local/lib/libsk-libfido2.dylib`
+
+`~/.ssh/config`
+```sh
+# /opt/homebrew/opt/openssh-sk-provider/lib/sk-libfido2.dylib
+# ==>
+# /usr/local/lib/libsk-libfido2.dylib
+Host github.com
+  SecurityKeyProvider /usr/local/lib/libsk-libfido2.dylib
+  AddKeysToAgent no
+  UseKeychain no
+  IdentityFile ~/.ssh/id_ed25519_sk_token2_A
+  IdentityFile ~/.ssh/id_ed25519_sk_token2_B
+```
+
 # SSH Tools Homebrew Tap
 
 This Homebrew tap provides various SSH-related tools and utilities for macOS.
