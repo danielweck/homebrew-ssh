@@ -17,17 +17,48 @@ https://github.com/Homebrew/homebrew-core/blob/main/Formula/o/openssh-sk-provide
 * `sudo chmod a+x /usr/local/lib/libsk-libfido2.dylib`
 * `ls -alshFGt --color=auto /usr/local/lib/libsk-libfido2.dylib`
 
+...also, Apple TouchID fingerprint reader:
+
+* `sc_auth create-ctk-identity -l ssh -k p-256-ne -t bio`
+* `ssh-keychain % sc_auth list-ctk-identities`
+* `sc_auth list-ctk-identities -t ssh` (to delete: `sc_auth delete-ctk-identity -h HASH`)
+* `ssh-keygen -w /usr/lib/ssh-keychain.dylib -K -N ""` (empty PIN is ok)
+* `ls -alshFGt --color=auto id_ecdsa_sk_rk_ssh*`
+* `mv id_ecdsa_sk_rk_ssh* ~/.ssh/` (`.pub` and "private" key too ... "private" == placeholder for hardware enclave / security token)
+* `cat id_ecdsa_sk_rk_ssh.pub` (upload to GitHub)
+* `ssh-copy-id -i id_ecdsa_sk_rk_ssh localhost` + `ssh -o SecurityKeyProvider=/usr/lib/ssh-keychain.dylib localhost` (for SSH localhost)
+* `ssh-add -K -S /usr/lib/ssh-keychain.dylib` (for SSH agent, run after reboot)
+* `ssh-add -L` (upload to GitHub)
+
+`~/.zshrc` or `~/.zprofile`
+```sh
+#export SSH_SK_PROVIDER=/usr/local/lib/libsk-libfido2.dylib
+export SSH_SK_PROVIDER=/usr/lib/ssh-keychain.dylib
+ssh-add -K -S /usr/lib/ssh-keychain.dylib
+```
+
 `~/.ssh/config`
 ```sh
 # /opt/homebrew/opt/openssh-sk-provider/lib/sk-libfido2.dylib
 # ==>
 # /usr/local/lib/libsk-libfido2.dylib
+
 Host github.com
+
+  # export SSH_SK_PROVIDER=/usr/local/lib/libsk-libfido2.dylib
   SecurityKeyProvider /usr/local/lib/libsk-libfido2.dylib
+
+  # export SSH_SK_PROVIDER=/usr/lib/ssh-keychain.dylib
+  SecurityKeyProvider /usr/lib/ssh-keychain.dylib
+
   AddKeysToAgent no
   UseKeychain no
-  IdentityFile ~/.ssh/id_ed25519_sk_token2_A
-  IdentityFile ~/.ssh/id_ed25519_sk_token2_B
+
+  IdentityFile ~/.ssh/id_ecdsa_sk_rk_ssh_finger
+  IdentityFile ~/.ssh/id_ed25519_sk_token2_usbc_github2
+  IdentityFile ~/.ssh/id_ed25519_sk_token2_usbc_github
+
+# ssh -T -vvv git@github.com
 ```
 
 # SSH Tools Homebrew Tap
